@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Researcher Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .profile-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .name {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #667eea;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: #333;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .research-area {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 8px;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .research-area:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -45px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .timeline-subtitle {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.2em;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 5px 0;
+            color: #555;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .skill-category li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .project-description {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .project-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .keyword {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            color: #666;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .profile-header, .section {
+                padding: 20px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-image">R</div>
+            <h1 class="name">Dave Furtado</h1>
+            <p class="title">PhD Candidate (Electrical Engineering) | Systems Engineering Professional</p>
+            <p class="title">University of New South Wales (UNSW) Sydney</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>d.furtado@unsw.edu.au</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Sydney, Australia</span>
+                </div>
+                <div class="contact-item">
+                    <span>💼</span>
+                    <span> CPEng | CSEP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="section">
+            <h2>About</h2>
+            <p>Specialized Systems Engineer and PhD candidate with extensive experience in multi-domain platform projects, focusing on autonomous data-driven modeling for advanced satellite constellation management. My research bridges academic innovation with practical defence applications, emphasizing digital twin technology, machine learning, and systems engineering principles.</p>
+            <p style="margin-top: 15px;">With over a decade of industry experience across aerospace, defence, and telecommunications sectors, I bring a unique perspective that combines theoretical research with real-world implementation challenges. My work contributes to advancing Australian sovereign capabilities in space systems and defence technologies.</p>
+        </div>
+
+        <!-- Research Interests -->
+        <div class="section">
+            <h2>Research Interests</h2>
+            <div style="margin-bottom: 20px;">
+                <span class="research-area">Digital Twins</span>
+                <span class="research-area">Machine Learning</span>
+                <span class="research-area">Satellite Systems</span>
+                <span class="research-area">Systems Engineering</span>
+                <span class="research-area">Autonomous Systems</span>
+                <span class="research-area">Data-Driven Modeling</span>
+                <span class="research-area">Constellation Management</span>
+                <span class="research-area">Predictive Analytics</span>
+                <span class="research-area">Deep Learning</span>
+                <span class="research-area">Neural Networks</span>
+                <span class="research-area">Telemetry Data</span>
+                <span class="research-area">Product Modularity</span>
+            </div>
+        </div>
+
+        <!-- Current Research -->
+        <div class="section">
+            <h2>Current Research Projects</h2>
+            
+            <div class="project-card">
+                <div class="project-title">Autonomous Data-Driven Modelling for Advanced Satellite Constellation Management</div>
+                <div class="project-description">
+                    Developing autonomous, data-driven models for satellite constellation management using digital twin technology. The research focuses on creating highly accurate virtual models of satellite systems, integrating historical and real-time telemetry data for enhanced predictive maintenance and operational efficiency. This work aims to address satellite degradation challenges through advanced machine learning techniques and continuous trajectory modeling.
+                </div>
+                <div class="project-keywords">
+                    <span class="keyword">Digital Twins</span>
+                    <span class="keyword">Machine Learning</span>
+                    <span class="keyword">Satellite Systems</span>
+                    <span class="keyword">Predictive Maintenance</span>
+                    <span class="keyword">Telemetry Data</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">Dynamic Modular Approach to System Architectures</div>
+                <div class="project-description">
+                    Exploring the relationship between lifecycle modularity and lifecycle costs across the product lifecycle. This research encompasses all aspects of a product's lifecycle, from initial conceptual design through normal use to disposal, using a cradle-to-grave design philosophy applied to consumer products.
+                </div>
+                <div class="project-keywords">
+                    <span class="keyword">Product Modularity</span>
+                    <span class="keyword">Lifecycle Costing</span>
+                    <span class="keyword">Systems Architecture</span>
+                    <span class="keyword">Design for Assembly</span>
+                    <span class="keyword">Manufacturing</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+            <h2>Education & Qualifications</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - Present</div>
+                    <div class="timeline-title">Doctor of Philosophy (PhD)</div>
+                    <div class="timeline-subtitle">Electrical Engineering, University of New South Wales</div>
+                    <p>Research Focus: Autonomous Data-Driven Modelling for Advanced Satellite Constellation Management</p>
+                </div>
+                               
+                <div class="timeline-item">
+                    <div class="timeline-date">2009</div>
+                    <div class="timeline-title">Master of Engineering</div>
+                    <div class="timeline-subtitle">Telecommunication Engineering and Networks, University of Technology Sydney</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2008</div>
+                    <div class="timeline-title">Master of Business</div>
+                    <div class="timeline-subtitle">Engineering Management, University of Western Sydney</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2005</div>
+                    <div class="timeline-title">Bachelor of Engineering</div>
+                    <div class="timeline-subtitle">Telecommunication Engineering</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="section">
+            <h2>Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Aug 2020 - Current</div>
+                    <div class="timeline-title">Senior Systems Engineer</div>
+                    <div class="timeline-subtitle">Defense & Aerospace Consulting</div>
+                    <p>Leading capability definition, systems engineering management, and complex materiel development for defense projects. Specializing in data links, cybersecurity, and system architecting.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Feb 2019 - Jul 2020</div>
+                    <div class="timeline-title">Systems Engineer</div>
+                    <div class="timeline-subtitle">Aerospace Consulting</div>
+                    <p>Managed sustainment teams, developed systems engineering management plans, and conducted certification activities in accordance with technical regulatory frameworks.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Jan 2017 - Feb 2019</div>
+                    <div class="timeline-title">Systems Engineer</div>
+                    <div class="timeline-subtitle">Aerospace Australia</div>
+                    <p>Led verification and validation activities, system acceptance testing, and configuration management for complex aerospace systems.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Apr 2011 - Aug 2015</div>
+                    <div class="timeline-title">Engineering Configuration Manager</div>
+                    <div class="timeline-subtitle">Global Systems</div>
+                    <p>Managed hardware/software design lifecycle, established configuration management systems, and led certification activities for FAA, EASA, and CASA compliance.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills & Expertise -->
+        <div class="section">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Research & Development</h3>
+                    <ul>
+                        <li>Machine Learning & AI</li>
+                        <li>Digital Twin Technology</li>
+                        <li>Data Analysis & Processing</li>
+                        <li>Statistical Modeling</li>
+                        <li>Predictive Analytics</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Systems Engineering</h3>
+                    <ul>
+                        <li>System Architecture Design</li>
+                        <li>Requirements Management</li>
+                        <li>Configuration Management</li>
+                        <li>Test & Evaluation</li>
+                        <li>Risk Management</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <ul>
+                        <li>Python, MATLAB, C/C++</li>
+                        <li>MySQL, Visual Basic</li>
+                        <li>DOORS, JAMA, POLARION</li>
+                        <li>MS Project, Visio</li>
+                        <li>Statistical Analysis Tools</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Domain Expertise</h3>
+                    <ul>
+                        <li>Aerospace & Defense</li>
+                        <li>Satellite Systems</li>
+                        <li>Cybersecurity</li>
+                        <li>Telecommunications</li>
+                        <li>Regulatory Compliance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certifications & Memberships -->
+        <div class="section">
+            <h2>Professional Certifications & Memberships</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-title">Chartered Professional Engineer (CPEng)</div>
+                    <div class="timeline-subtitle">Engineers Australia</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-title">Certified Systems Engineering Professional (CSEP)</div>
+                    <div class="timeline-subtitle">International Council on Systems Engineering (INCOSE)</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2014</div>
+                    <div class="timeline-title">DO-254 Airborne Electronic Hardware Design Assurance</div>
+                    <div class="timeline-subtitle">Practitioner's Course Certification</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Research Impact -->
+        <div class="section">
+            <h2>Research Impact & Recognition</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Years Industry Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Active PhD Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Professional Certifications</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Research Domains</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="margin-bottom: 15px;">Current Contributions</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #667eea;">▸</span>
+                        Defence Trailblazer Industry Research Program participant, contributing to industry-academia collaboration
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #667eea;">▸</span>
+                        Developing machine learning pipelines for spacecraft digital twinning at Zendir (formerly Nominal Systems)
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #667eea;">▸</span>
+                        Contributing to Australian sovereign capability development in space systems
+                    </li>
+                    <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #667eea;">▸</span>
+                        Authoring research on "Establishing a Systems Engineering Framework to other disciplines of Science"
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Contact & Collaboration -->
+        <div class="section">
+            <h2>Collaboration & Contact</h2>
+            <p>I am interested in collaborating on research projects that bridge academic innovation with practical applications in defense, aerospace, and systems engineering. My current focus areas include:</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0;">
+                <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 20px; border-radius: 10px;">
+                    <h3 style="margin-bottom: 10px;">Research Collaboration</h3>
+                    <p>Digital twins, machine learning applications in aerospace, systems modularity, and predictive maintenance technologies.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 20px; border-radius: 10px;">
+                    <h3 style="margin-bottom: 10px;">Industry Partnerships</h3>
+                    <p>Systems engineering consulting, defense capability development, and technology commercialization opportunities.</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px;">Feel free to reach out for research collaborations, consulting opportunities, or academic discussions. I am particularly interested in projects that contribute to Australian defense capabilities and advance the field of autonomous systems.</p>
+        </div>
+    </div>
+</body>
+</html>
