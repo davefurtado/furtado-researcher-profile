@@ -302,6 +302,68 @@
             opacity: 0.9;
         }
 
+        .badges-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .badge-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 200px;
+            max-width: 250px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .badge-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .badge-icon {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .badge-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .badge-issuer {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .badge-year {
+            font-size: 0.8em;
+            opacity: 0.8;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 10px;
@@ -324,6 +386,15 @@
             .skills-grid {
                 grid-template-columns: 1fr;
             }
+
+            .badges-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .badge-card {
+                min-width: 280px;
+            }
         }
     </style>
 </head>
@@ -331,10 +402,10 @@
     <div class="container">
         <!-- Profile Header -->
         <div class="profile-header">
-            <img src="profile-photo.JPG" alt="Dave Furtado" style="width: 50%; height: 50%; border-radius: 50%; object-fit: cover;">
+            <img src="profile-photo.JPG" alt="Dave Furtado" style="width: 25%; height: 25%; border-radius: 50%; object-fit: cover;">
             <h1 class="name">Dave Furtado</h1>
-            <p class="title">PhD Candidate (Electrical Engineering) | Systems Engineering Professional</p>
-            <p class="title">University of New South Wales (UNSW) Sydney</p>
+            <p class="title">PhD Candidate in Electrical Engineering | Systems Engineering Professional</p>
+            <p class="title">University of New South Wales (UNSW) Canberra</p>
             <div class="contact-info">
                 <div class="contact-item">
                     <span>📧</span>
@@ -342,11 +413,11 @@
                 </div>
                 <div class="contact-item">
                     <span>📍</span>
-                    <span>Sydney, Australia</span>
+                    <span>Canberra, Australia</span>
                 </div>
                 <div class="contact-item">
                     <span>💼</span>
-                    <span> CPEng | CSEP</span>
+                    <span>CPEng | CSEP</span>
                 </div>
             </div>
         </div>
@@ -354,8 +425,8 @@
         <!-- About Section -->
         <div class="section">
             <h2>About</h2>
-            <p>Specialized Systems Engineer and PhD candidate with extensive experience in multi-domain platform projects, focusing on autonomous data-driven modeling for advanced satellite constellation management. My research bridges academic innovation with practical defence applications, emphasizing digital twin technology, machine learning, and systems engineering principles.</p>
-            <p style="margin-top: 15px;">With over a decade of industry experience across aerospace, defence, and telecommunications sectors, I bring a unique perspective that combines theoretical research with real-world implementation challenges. My work contributes to advancing Australian sovereign capabilities in space systems and defence technologies.</p>
+            <p>Specialized Systems Engineer and PhD candidate with extensive experience in multi-domain platform projects, focusing on autonomous data-driven modeling for advanced satellite constellation management. My research bridges academic innovation with practical defense applications, emphasizing digital twin technology, machine learning, and systems engineering principles.</p>
+            <p style="margin-top: 15px;">With over a decade of industry experience across aerospace, defense, and telecommunications sectors, I bring a unique perspective that combines theoretical research with real-world implementation challenges. My work contributes to advancing Australian sovereign capabilities in space systems and defense technologies.</p>
         </div>
 
         <!-- Research Interests -->
@@ -374,6 +445,36 @@
                 <span class="research-area">Neural Networks</span>
                 <span class="research-area">Telemetry Data</span>
                 <span class="research-area">Product Modularity</span>
+            </div>
+        </div>
+
+        <!-- Professional Badges -->
+        <div class="section">
+            <h2>Professional Certifications & Badges</h2>
+			<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="d672cfbb-4a9c-417e-b065-037d38efe109" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+             <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="33363135-a9bf-43a4-b910-9bf19fe0e1d9" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+
+        
+
+            <!-- Timeline for detailed information -->
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-title">Chartered Professional Engineer (CPEng)</div>
+                    <div class="timeline-subtitle">Engineers Australia</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-title">Certified Systems Engineering Professional (CSEP)</div>
+                    <div class="timeline-subtitle">International Council on Systems Engineering (INCOSE)</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2014</div>
+                    <div class="timeline-title">DO-254 Airborne Electronic Hardware Design Assurance</div>
+                    <div class="timeline-subtitle">Practitioner's Course Certification</div>
+                </div>
             </div>
         </div>
 
@@ -420,7 +521,14 @@
                     <div class="timeline-subtitle">Electrical Engineering, University of New South Wales</div>
                     <p>Research Focus: Autonomous Data-Driven Modelling for Advanced Satellite Constellation Management</p>
                 </div>
-                               
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-title">Professional Doctorate Thesis Proposal</div>
+                    <div class="timeline-subtitle">Systems Engineering, PhD</div>
+                    <p>A Dynamic Modular Approach to System Architectures across the Product Lifecycle</p>
+                </div>
+                
                 <div class="timeline-item">
                     <div class="timeline-date">2009</div>
                     <div class="timeline-title">Master of Engineering</div>
@@ -471,6 +579,20 @@
                     <div class="timeline-title">Engineering Configuration Manager</div>
                     <div class="timeline-subtitle">Global Systems</div>
                     <p>Managed hardware/software design lifecycle, established configuration management systems, and led certification activities for FAA, EASA, and CASA compliance.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2010 - 2011</div>
+                    <div class="timeline-title">Engineering Management Trainee</div>
+                    <div class="timeline-subtitle">Electronics</div>
+                    <p>Market analysis, manufacturing defect escalation, automated testing of production prototypes, quality control, and SAP systems management.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2008 - 2009</div>
+                    <div class="timeline-title">UAT/SIT Test Analyst</div>
+                    <div class="timeline-subtitle">Managed Services</div>
+                    <p>System integration and user acceptance testing for telecommunications billing systems, test case development, defect resolution processes.</p>
                 </div>
             </div>
         </div>
@@ -525,30 +647,6 @@
             </div>
         </div>
 
-        <!-- Certifications & Memberships -->
-        <div class="section">
-            <h2>Professional Certifications & Memberships</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">2020</div>
-                    <div class="timeline-title">Chartered Professional Engineer (CPEng)</div>
-                    <div class="timeline-subtitle">Engineers Australia</div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">2020</div>
-                    <div class="timeline-title">Certified Systems Engineering Professional (CSEP)</div>
-                    <div class="timeline-subtitle">International Council on Systems Engineering (INCOSE)</div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">2014</div>
-                    <div class="timeline-title">DO-254 Airborne Electronic Hardware Design Assurance</div>
-                    <div class="timeline-subtitle">Practitioner's Course Certification</div>
-                </div>
-            </div>
-        </div>
-
         <!-- Research Impact -->
         <div class="section">
             <h2>Research Impact & Recognition</h2>
@@ -562,7 +660,7 @@
                     <div class="stat-label">Active PhD Projects</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">3</div>
+                    <div class="stat-number">4</div>
                     <div class="stat-label">Professional Certifications</div>
                 </div>
                 <div class="stat-card">
